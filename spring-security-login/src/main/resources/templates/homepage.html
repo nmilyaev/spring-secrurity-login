@@ -1,0 +1,37 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head></head>
+
+<body>
+lalalalalal
+
+<div sec:authorize="isAuthenticated()">
+    This content is only shown to authenticated users.
+</div>
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+    This content is only shown to administrators.
+</div>
+<div sec:authorize="hasRole('ROLE_USER')">
+    This content is only shown to users.
+</div>
+
+    <h1>This is the body of the sample view</h1>
+
+    <security:authorize access="hasRole('ROLE_USER')">
+        This text is only visible to a user
+        <br/> <br/>
+        <a href="<c:url value="/admin/adminpage.html" />">Restricted Admin Page</a>
+        <br/> <br/>
+    </security:authorize>
+
+    <security:authorize access="hasRole('ROLE_ADMIN')">
+        This text is only visible to an admin
+        <br/>
+        <a href="<c:url value="/admin/adminpage.html" />">Admin Page</a>
+        <br/>
+    </security:authorize>
+
+    <a href="<c:url value="/perform_logout" />">Logout</a>
+
+</body>
+</html>
