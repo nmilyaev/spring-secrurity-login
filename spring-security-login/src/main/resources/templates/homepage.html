@@ -3,11 +3,8 @@
 <head></head>
 
 <body>
-lalalalalal
+Logged user: [[${#httpServletRequest.userPrincipal}]]!</span>
 
-<div sec:authorize="isAuthenticated()">
-    This content is only shown to authenticated users.
-</div>
 <div sec:authorize="hasRole('ROLE_ADMIN')">
     This content is only shown to administrators.
 </div>
@@ -17,21 +14,20 @@ lalalalalal
 
     <h1>This is the body of the sample view</h1>
 
-    <security:authorize access="hasRole('ROLE_USER')">
-        This text is only visible to a user
-        <br/> <br/>
-        <a href="<c:url value="/admin/adminpage.html" />">Restricted Admin Page</a>
-        <br/> <br/>
-    </security:authorize>
-
-    <security:authorize access="hasRole('ROLE_ADMIN')">
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
         This text is only visible to an admin
         <br/>
-        <a href="<c:url value="/admin/adminpage.html" />">Admin Page</a>
+        <a th:href="@{/admin/adminpage}">Admin page</a>, which is same as <br/>
+        <a href="/admin/adminpage">Admin Page</a>
         <br/>
-    </security:authorize>
+    </div>
 
-    <a href="<c:url value="/perform_logout" />">Logout</a>
+<div sec:authorize="isAuthenticated()">
+    This content is only shown to authenticated users.
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
 
+</div>
 </body>
 </html>

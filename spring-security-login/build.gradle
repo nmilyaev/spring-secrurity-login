@@ -22,7 +22,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    compile group: 'org.springframework.security', name: 'spring-security-web', version:'5.2.3.RELEASE'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+    compile 'org.springframework.security:spring-security-web:5.2.3.RELEASE'
     compile group: 'org.springframework.security', name: 'spring-security-config', version:'5.2.3.RELEASE'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
